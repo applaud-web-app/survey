@@ -23,7 +23,7 @@
                                 <div class="relative z-0 mb-3 w-full group">
                                     <input type="datetime-local" name="start_date" id="start_date"
                                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                        placeholder=" " required="">
+                                        placeholder=" " required="" min="{{date('Y-m-d H:i')}}">
                                     <label for="start_date"
                                         class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start
                                         Date</label>
@@ -31,7 +31,7 @@
                                 <div class="relative z-0 mb-3 w-full group">
                                     <input type="datetime-local" name="end_date" id="end_date"
                                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                        placeholder=" ">
+                                        placeholder=" " min="{{date('Y-m-d H:i')}}">
                                     <label for="end_date"
                                         class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">End
                                         Date</label>
@@ -83,6 +83,13 @@
                                 <div class="opt_box">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 question-card">
+                        <div class="form-group mb-3 sm:col-span-1  md:col-span-1 lg:col-span-1 xl:col-span-2 ">
+                            <label for="additional_note" class="label">Additional Note</label>
+                            <textarea class="form-control" id="additional_note" name="additional_note" placeholder="Enter Note" rows="5"></textarea>
                         </div>
                     </div>
 

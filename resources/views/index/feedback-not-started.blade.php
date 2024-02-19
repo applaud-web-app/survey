@@ -9,7 +9,7 @@
             </div>
             <div class="mb-4 title-card text-center">
                 <img src="{{asset('assets/images/cancel.png')}}" alt="" class="mx-auto w-[120px] mb-3 ">
-                <h1 class="text-3xl mb-2 text-red-500">This survey not started.</h1>
+                <h1 class="text-3xl mb-2 text-yellow-500">This survey not started</h1>
             </div>
            
         </div>

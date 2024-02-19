@@ -27,6 +27,7 @@ Route::group(['middleware'=>['auth'],'prefix'=>'admin'],function(){
     Route::get('/duplicate-survey', [FeedbackController::class,'duplicateSurvey']);
     Route::get('/survey-response', [FeedbackController::class,'surveyResponse']);
     Route::get('/survey-response-individual', [FeedbackController::class,'surveyResponseIndividual']);
+    Route::get('/survey-response-export', [FeedbackController::class,'surveyResponseExport']);
 
     Route::get('/profile', [MainController::class,'profile']);
     Route::post('/update-my-profile', [MainController::class,'updateMyProfile']);

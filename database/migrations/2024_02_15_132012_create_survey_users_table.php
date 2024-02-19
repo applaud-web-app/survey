@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('survey_users', function (Blueprint $table) {
             $table->id();
             $table->string('email',155)->nullable();
+            $table->string('full_name',155)->nullable();
             $table->bigInteger('survey_id');
             $table->integer('user_id');
             $table->timestamps();

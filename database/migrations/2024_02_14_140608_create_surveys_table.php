@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('end_date')->nullable();
             $table->integer('category_id');
             $table->string('description',1500)->nullable();
+            $table->string('additional_note',1500)->nullable();
             $table->integer('created_by');
             $table->tinyInteger('status')->comment('0=>inactive,1=>active,2=>remove');
             $table->timestamps();

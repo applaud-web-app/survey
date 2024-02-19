@@ -7,6 +7,7 @@
                 <div class="items-center ">
                     <h1 class="md:text-3xl text-2xl md:mb-0 mb-3 block dark:text-slate-100">{{$surveyData->survey_title}}</h1>
                 </div>
+                <a href="#" class="px-2 py-2 lg:px-4 text-sm border border-green-500 bg-green-500 text-white rounded hover:bg-green-600"><i class="fa-regular fa-file-excel"></i> Export to CSV</a>
             </div>
             <div class="mb-4 border-b bg-white border-gray-200 dark:border-slate-700">
                 <ul class="flex flex-wrap -mb-px  font-medium text-center">

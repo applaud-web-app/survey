@@ -89,18 +89,38 @@
                         @endphp
                     @endforeach
 
-                    <div class="flex space-x-3">
-                        <div class="w-full">
-                            <button type="button"
-                                class="px-3 w-full py-2 mr-2 mb-2  font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><i
-                                    class="fa-solid fa-left-long"></i> BacK</button>
-                        </div>
-                        <div class="w-full">
-                            <button type="submit"
-                                class="text-white w-full text-center bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded  px-3 py-2  dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-700">Next
-                                <i class="fa-solid fa-right-long"></i></button>
-                        </div>
+
+
+                    <div class="bg-white rounded-sm px-3 py-2 border border-gray-100 mb-3">
+                        <p>{{$feedbackData->additional_note}}</p>
                     </div>
+
+                    <div class="flex space-x-3">
+                        <div class="w-1/2">
+                            <a href="{{ url()->previous() }}"
+                                class="px-3 w-full py-2 mr-2 mb-2  font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><i
+                                    class="fa-solid fa-left-long"></i> Back</a>
+
+                            <button type="submit"
+                                class="text-white text-center bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded  px-3 py-2  dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-700"><i class="fa-solid fa-check"></i> Submit
+                                </button>
+                        </div>
+                        <div class="w-1/2 flex items-center ">
+                            <div class="w-full me-3">
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+                                    <div class="bg-blue-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 50%"> 50%</div>
+                                </div>
+                            </div>
+                            <div class="whitespace-nowrap ms-3">
+                                <p>Page 2 of 3</p>
+                            </div>
+                        </div>
+                    </div>            
+
+
+
+
+                 
                 </form>
             </div>
         </div>

@@ -32,7 +32,7 @@ class IndexController extends Controller
 
     public function feedbackProcess($id,$slug){
         
-        $feedbackData = Survey::select('id','start_date','end_date','str_slug')->with('survey_question')->where(['id'=>$id,'str_slug'=>$slug,'status'=>1])->first();
+        $feedbackData = Survey::select('id','start_date','end_date','str_slug','additional_note')->with('survey_question')->where(['id'=>$id,'str_slug'=>$slug,'status'=>1])->first();
         if(time()<strtotime($feedbackData->start_date)){
             return view('index.feedback-not-started');
         }
@@ -123,7 +123,7 @@ class IndexController extends Controller
             }
         }
         if($feedbackData->id!=Session::get('SURVEY_ID')){
-            die("<h1>SOMETHING WENT WRONG>>>SURVEY ENDS OR LINK IS EXPIRED</h1>");
+            return view('feedback.survey-end');
         }
         $sId = Session::get('LST_SURVEY_ID');
         $suveyUser = SurveyUser::select('email')->find($sId);
@@ -137,11 +137,12 @@ class IndexController extends Controller
 
     public function saveFeedbackEmail(Request $request){
         $request->validate([
-            'email'=>'required'
+            'email'=>'required',
+            'full_name'=>'required'
         ]);
         $id = $this->memberObj['id'];
         $sId = Session::get('LST_SURVEY_ID');
-        SurveyUser::where(['id'=>$sId,'survey_id'=>$id])->update(['email'=>$request->email]);
+        SurveyUser::where(['id'=>$sId,'survey_id'=>$id])->update(['email'=>$request->email,'full_name'=>$request->full_name]);
         return redirect()->back()->with('success','Mail submitted successfully...');
     }
 

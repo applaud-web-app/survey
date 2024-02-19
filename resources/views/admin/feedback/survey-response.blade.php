@@ -7,6 +7,7 @@
                 <div class="items-center ">
                     <h1 class="md:text-3xl text-2xl md:mb-0 mb-3 block dark:text-slate-100">{{$surveyData->survey_title}}</h1>
                 </div>
+                <a href="{{$IndLinkEE}}" class="px-2 py-2 lg:px-4 text-sm border border-green-500 bg-green-500 text-white rounded hover:bg-green-600"><i class="fa-regular fa-file-excel"></i> Export to CSV</a>
             </div>
             <div class="mb-4 border-b bg-white border-gray-200 dark:border-slate-700">
                 <ul class="flex flex-wrap -mb-px  font-medium text-center">
@@ -43,7 +44,7 @@
                                     <h5 class="text-gray-800 card-title">{{$item->question}}</h5>
                                     <p class="text-sm text-gray-500 dark:text-gray-400">{{$item->survey_answer_count}} Responses</p>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body ">
                                     <div id="area-chart-{{$item->id}}"></div>
                                 </div>
                             </div>
@@ -58,6 +59,8 @@
                                                 height: 300,
                                                 width: "100%",
                                                 type: "pie",
+                                               
+                                                
                                             },
                                             stroke: {
                                                 colors: ["white"],
@@ -67,7 +70,7 @@
                                                 pie: {
                                                     labels: {
                                                         show: true,
-                        
+                                                        
                                                     },
                                                     size: "100%",
                                                     dataLabels: {
@@ -78,7 +81,8 @@
                                             labels: {!!$item->q_options!!},
                                             dataLabels: {
                                                 enabled: true,
-                        
+                                              
+
                                             },
                                             legend: {
                                                 position: "bottom",
@@ -87,14 +91,14 @@
                                             yaxis: {
                                                 labels: {
                                                     formatter: function(value) {
-                                                        return value + "%"
+                                                        return value + " Responses"
                                                     },
                                                 },
                                             },
                                             xaxis: {
                                                 labels: {
                                                     formatter: function(value) {
-                                                        return value + "%"
+                                                        return value + " Responses"
                                                     },
                                                 },
                                                 axisTicks: {
@@ -222,4 +226,7 @@
 
         </div>
     </section>
+
+
+    
 @endsection

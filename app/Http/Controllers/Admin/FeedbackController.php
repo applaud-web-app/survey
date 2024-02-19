@@ -9,6 +9,8 @@ use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use App\Models\SurveyUser;
 use Auth,stdClass,Common;
+use App\Exports\SurveyExport;
+use Maatwebsite\Excel\Facades\Excel;
 class FeedbackController extends Controller
 {
     public function feedbackForms(){
@@ -45,6 +47,7 @@ class FeedbackController extends Controller
                 $surveyObj->end_date = $endDate;
                 $surveyObj->category_id = $request->category;
                 $surveyObj->description = $request->description;
+                $surveyObj->additional_note = $request->additional_note;
                 $surveyObj->created_by = Auth::id();
                 $surveyObj->status = 1;
                 $surveyObj->save();
@@ -106,6 +109,7 @@ class FeedbackController extends Controller
                 $surveyObj->end_date = $endDate;
                 $surveyObj->category_id = $request->category;
                 $surveyObj->description = $request->description;
+                $surveyObj->additional_note = $request->additional_note;
                 $surveyObj->save();
                 $insData = [];
                 if(!empty($request->question)){
@@ -216,6 +220,13 @@ class FeedbackController extends Controller
         $inputObjI->url = url('admin/survey-response-individual');
         $IndLink = Common::encryptLink($inputObjI);
 
+
+        $inputObjEE = new stdClass();
+        $inputObjEE->params = 'id='.$id;
+        $inputObjEE->url = url('admin/survey-response-export');
+        $IndLinkEE = Common::encryptLink($inputObjEE);
+
+        $data['IndLinkEE'] = $IndLinkEE;
         $data['summary_link'] = $sumLink;
         $data['individual_link'] = $IndLink;
         return view('admin.feedback.survey-response',$data);
@@ -228,6 +239,14 @@ class FeedbackController extends Controller
         $inputObj->params = 'id='.$id;
         $inputObj->url = url('admin/survey-response');
         $sumLink = Common::encryptLink($inputObj);
+
+        $inputObjEE = new stdClass();
+        $inputObjEE->params = 'id='.$id;
+        $inputObjEE->url = url('admin/survey-response-export');
+        $IndLinkEE = Common::encryptLink($inputObjEE);
+
+        $data['IndLinkEE'] = $IndLinkEE;
+
         $inputObjI = new stdClass();
         $inputObjI->params = 'id='.$id;
         $inputObjI->url = url('admin/survey-response-individual');
@@ -237,6 +256,12 @@ class FeedbackController extends Controller
         $data['surveyIndividual'] = SurveyUser::select('id','email')->with('survey_answer')->where('survey_id',$id)->paginate(1);
         
         return view('admin.feedback.survey-response-individual',$data);
+    }
+
+    public function surveyResponseExport(){
+        $id = $this->memberObj['id'];
+        $surveyData = Survey::select('id','survey_title')->with('survey_question')->where(['id'=>$id])->first();
+        return Excel::download(new SurveyExport($surveyData), $surveyData->survey_title.'.xlsx');
     }
 
 }

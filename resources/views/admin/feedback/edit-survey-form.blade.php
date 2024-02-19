@@ -130,6 +130,14 @@
 
                     </div>
 
+                    
+                    <div class="mb-3 question-card">
+                        <div class="form-group mb-3 sm:col-span-1  md:col-span-1 lg:col-span-1 xl:col-span-2 ">
+                            <label for="additional_note" class="label">Additional Note</label>
+                            <textarea class="form-control" id="additional_note" name="additional_note" placeholder="Enter Note" rows="5">{{$feedbackData->additional_note}}</textarea>
+                        </div>
+                    </div>
+
                     <div class="flex space-x-3">
                         <div class="w-full">
                             <button type="button" id="add_q_btn" class="px-3 w-full py-2 mr-2 mb-2  font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Add Question</button>
